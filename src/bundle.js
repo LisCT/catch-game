@@ -12,20 +12,6 @@ canvas.height = window.innerHeight;
 // 5. Make desappear elements inside the bag out of the loop.
 // 6. Elements that are not in the bag need to be in loop for catching.
 
-// Variables
-const mouse = {
-  x: undefined,
-  y: undefined
-};
-
-const maxRadius = 60;
-
-// Event Listeners
-window.addEventListener('mousemove', function(event) {
-  mouse.x = event.x;
-  mouse.y = event.y;
-});
-
 window.addEventListener('resize', function() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -36,54 +22,44 @@ window.addEventListener('resize', function() {
 // Constructor, Objects 
  class Circle {
 
-   constructor(x, y, dx, dy, radius, color) {
-    this.x = x;
-    this.y = y;
-    this.dx = dx;
-    this.dy = dy;
-    this.radius = radius;
-    this.color = color;
+  constructor(x, y, dx, dy, radius, color) {
+    
+  this.x = x;
+  this.y = y;
+  this.dx = dx;
+  this.dy = dy;
+  this.radius = radius;
+  this.color = color;
 
-    // methods
-    this.draw = function() {
-      context.beginPath();
-      context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      context.strokeStyle = 'blue';
-      context.fillStyle = this.color;
-      context.fill();
-      context.stroke();
-    };
+  // methods
+  this.draw = function() {
+    context.beginPath();
+    context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    context.strokeStyle = 'blue';
+    context.fillStyle = this.color;
+    context.fill();
+    context.stroke();
+  };
 
-    this.update = function() {
-      if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
-        this.dx = -this.dx;
-      }
+  this.update = function() {
+    if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
+      this.dx = -this.dx;
+    }
 
-      if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
-        this.dy = -this.dy;
-      }
+    if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
+      this.dy = -this.dy;
+    }
 
-      this.x += this.dx;
-      this.y += this.dy;
+    this.x += this.dx;
+    this.y += this.dy;
 
-      // interactivity on mouse hover
-      if (
-        mouse.x - this.x < 50 &&
-        mouse.x - this.x > -50 &&
-        mouse.y - this.y < 50 &&
-        mouse.y - this.y > -50
-      ) {
-        if (this.radius < maxRadius) {
-          this.radius += 1;
-        }
-      } else if (this.radius > radius) {
-        this.radius -= 1;
-      }
 
-      this.draw();
-    };
-  }
+    }
+
+    this.draw();
+  };
 }
+
 
 // Implementation
 let cicleArray = [];

@@ -1,4 +1,4 @@
-# Canvas Boilerplate
+# Catch Game
 
 
 ## Repository
